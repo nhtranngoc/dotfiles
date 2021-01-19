@@ -82,7 +82,7 @@ plugins=(
     osx
     bgnotify
     zsh-syntax-highlighting
-    zsh-autosuggestions
+    zsh-completions
 )
 
 # Disable COMPFIX & insecure folders
