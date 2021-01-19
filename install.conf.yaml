@@ -1,0 +1,27 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+
+- clean: ['~']
+
+- shell:
+    - [sh pre-install.sh, Running pre installation script]
+    - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom folders]
+    - [mkdir -p ~/.oh-my-zsh-custom/plugins, Creating oh-my-zsh custom plugins folders]
+    - [brew bundle, Installing Homebrew formulas from Brewfile]
+    - [if ! hash bundle 2>/dev/null; then gem install bundler; fi, Installing Bundler]
+    - [if ! hash eslint 2>/dev/null; then npm install -g eslint; fi, Installing ESLint]
+
+- link:
+    ~/.gitconfig: gitconfig
+    ~/.zshrc:
+      force: true
+      path: zshrc
+    ~/.oh-my-zsh/custom/plugins/zsh-completions: oh-my-zsh/custom/plugins/zsh-completions/
+    ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting: oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+    ~/.Brewfile: Brewfile
+  
+- shell:
+    - [p10k configure, Configure Powerlevel10k ZSH plugin & fonts]
+    - [git submodule update --init --recursive, Installing submodules]
